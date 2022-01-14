@@ -1,15 +1,23 @@
 :root {
   --color-background: rgb(230, 230, 230);
   --color-font: black;
+
   --app-content-main-color: black;
   --app-content-secondary-color: #f3f6fd;
+
+  --btn-background: #82bf1c;
+  --btn-hover: #22c730;
 }
 
 html[data-theme="dark"] {
   --color-background: black;
   --color-font: white;
+
   --app-content-main-color: #fff;
   --app-content-secondary-color: #1d283c;
+
+  --btn-background: #5558ed;
+  --btn-hover: #50DFFC;
 }
 
 body {

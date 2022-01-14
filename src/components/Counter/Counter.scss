@@ -1,0 +1,51 @@
+.counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .counter-btn {
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+
+    &.medium {
+      width: 30px;
+      height: 30px;
+    }
+
+    &.small {
+      width: 20px;
+      height: 20px;
+    }
+
+    &.add {
+      background-color: #64ab5b;
+
+      &:hover {
+        box-shadow: 0 0 15px -4px #40b985;
+      }
+    }
+
+    &.remove {
+      background-color: #d075a2;
+
+      &:hover {
+        box-shadow: 0 0 15px -4px #ccb6c1;
+      }
+    }
+  }
+
+  .counter-number {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 10px;
+
+    &.small {
+      font-size: 15px;
+    }
+  }
+}

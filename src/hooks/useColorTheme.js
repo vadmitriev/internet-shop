@@ -5,19 +5,21 @@ const COLOR_THEME = {
   dark: "dark",
 };
 
-const LC_KEY = "theme";
+const THEME_QUERY = "(prefers-color-scheme: dark)";
 
-const prefersTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+const THEME_KEY = "data-theme";
+
+const prefersTheme = window.matchMedia(THEME_QUERY).matches
   ? COLOR_THEME.dark
   : COLOR_THEME.light;
 
 export const useColorTheme = ({ saveInLocalStorage = true }) => {
   const lcTheme = saveInLocalStorage
-    ? localStorage.getItem(LC_KEY)
+    ? localStorage.getItem(THEME_KEY)
     : prefersTheme;
   const initTheme = lcTheme ?? COLOR_THEME.dark;
   const [colorTheme, setColorTheme] = useState(initTheme);
-  document.documentElement.setAttribute("data-theme", colorTheme);
+  document.documentElement.setAttribute(THEME_KEY, colorTheme);
 
   const changeColorTheme = useCallback(
     (theme = "") => {
@@ -25,15 +27,15 @@ export const useColorTheme = ({ saveInLocalStorage = true }) => {
       setColorTheme(currentTheme);
 
       if (saveInLocalStorage) {
-        localStorage.setItem(LC_KEY, currentTheme);
+        localStorage.setItem(THEME_KEY, currentTheme);
       }
 
-      document.documentElement.setAttribute("data-theme", currentTheme);
+      document.documentElement.setAttribute(THEME_KEY, currentTheme);
     },
     [saveInLocalStorage]
   );
 
-  window.matchMedia("(prefers-color-scheme: dark)").addListener((e) => {
+  window.matchMedia(THEME_QUERY).addListener((e) => {
     const newTheme = e.matches ? COLOR_THEME.dark : COLOR_THEME.light;
     if (newTheme !== colorTheme) {
       changeColorTheme(newTheme);

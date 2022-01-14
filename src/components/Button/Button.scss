@@ -1,0 +1,27 @@
+.btn {
+  border-radius: 15px;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+      box-shadow: 0 0 15px -4px var(--btn-hover);
+  }
+}
+
+.btn-primary {
+  background-color: var(--btn-background);
+}
+
+.btn-secondary {
+  background-color: rgb(80, 82, 84);
+}
+
+.btn-small {
+  font-size: 14px;
+}
+
+.btn-medium {
+  font-size: 18px;
+}
