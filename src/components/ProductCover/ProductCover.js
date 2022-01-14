@@ -1,8 +1,12 @@
 import React from "react";
 import "./ProductCover.scss";
 
-const ProductCover = ({ url }) => {
-  return <div className="product-cover" style={{ backgroundImage: url }} />;
+const ProductCover = ({ url, alt = "" }) => {
+  return (
+    <div className="product-cover">
+      <img src={url} alt={alt} />
+    </div>
+  );
 };
 
 export default ProductCover;

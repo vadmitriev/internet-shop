@@ -1,4 +1,9 @@
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: var(--color-background);
+
   height: 80px;
   display: flex;
   align-items: center;

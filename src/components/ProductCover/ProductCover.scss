@@ -1,8 +1,17 @@
 .product-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 170px;
   width: 100%;
   background-size: cover;
   background-position: center;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+
+  img {
+    overflow: hidden;
+    margin-top: 20px;
+    width: 50%;
+  }
 }

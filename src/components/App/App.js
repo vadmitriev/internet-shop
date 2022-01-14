@@ -53,22 +53,25 @@ function App() {
 
         {isError && <ErrorMessage />}
 
-        <Routes>
-          <Route
-            path="/"
-            element={isLoading ? <Spinner /> : <HomePage data={data} />}
-          />
-        </Routes>
+        <div className="content-wrapper">
+          <Routes>
+            <Route
+              path="/"
+              element={isLoading ? <Spinner /> : <HomePage data={data} />}
+            />
+          </Routes>
+        </div>
       </div>
-
-      <Footer>
-        <span>
-          Автор:{" "}
-          <a href="https://github.com/vadmitriev/" target="_new" rel="follow">
-            Владимир Дмитриев
-          </a>
-        </span>
-      </Footer>
+      {!isLoading && (
+        <Footer>
+          <span>
+            Автор:{" "}
+            <a href="https://github.com/vadmitriev/" target="_new" rel="follow">
+              Владимир Дмитриев
+            </a>
+          </span>
+        </Footer>
+      )}
     </Router>
   );
 }

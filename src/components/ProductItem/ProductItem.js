@@ -5,7 +5,7 @@ import "./ProductItem.scss";
 const ProductItem = ({ item }) => {
   return (
     <div className="product-item">
-      <ProductCover url={item.img} />
+      <ProductCover url={item.img} alt={item.name} />
       <div className="details">
         <div className="title">{item.name}</div>
         <div className="buy">

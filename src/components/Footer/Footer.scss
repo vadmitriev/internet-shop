@@ -1,12 +1,17 @@
 .footer {
-  //position: absolute;
   color: var(--app-content-main-color);
-  background-color: var(--app-content-secondary-color);
+  background-color: var(--color-background);
   text-align: center;
-  //border-top: 1px solid #E7E7E7;
+
+  border-top: 1px solid #1d283c;
+
   padding: 20px;
   left: 0;
   bottom: 0;
   height: 20px;
   width: 100%;
+
+  a {
+    color: #6d5d94;
+  }
 }
