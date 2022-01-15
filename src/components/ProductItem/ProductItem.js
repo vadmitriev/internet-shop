@@ -2,9 +2,10 @@ import React from "react";
 import ProductCover from "components/ProductCover/ProductCover";
 import Button from "components/Button/Button";
 import Counter from "../Counter/Counter";
+
 import "./ProductItem.scss";
 
-const ProductItem = ({ item, onAdd, onRemove, count = 10 }) => {
+const ProductItem = ({ item, onAdd, onRemove }) => {
   return (
     <div className="product-item">
       <ProductCover url={item.img} alt={item.name} />
@@ -12,9 +13,9 @@ const ProductItem = ({ item, onAdd, onRemove, count = 10 }) => {
         <div className="title">{item.name}</div>
         <div className="buy">
           <div className="price">{item.price}$</div>
-          {count ? (
+          {item.count ? (
             <Counter
-              number={count}
+              number={item.count}
               onAdd={onAdd}
               onRemove={onRemove}
               size="m"

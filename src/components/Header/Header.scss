@@ -4,6 +4,8 @@
   z-index: 2;
   background-color: var(--color-background);
 
+  border-bottom: 1px solid #1d283c;
+
   height: 80px;
   display: flex;
   align-items: center;
@@ -13,6 +15,10 @@
   .wrapper {
     display: flex;
     flex-grow: 1;
+
+    //max-width: 1000px;
+    //margin: 50px 30px 0 0;
+    margin: 30px 10% 30px 10%;
 
     .title {
       color: var(--app-content-main-color);

@@ -1,0 +1,13 @@
+.App {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .content-wrapper {
+    flex: 1 1 auto;
+    //max-width: 1180px;
+    min-height: 70vh;
+    margin: 0 15% 0 15%;
+    padding: 0 40px;
+  }
+}
