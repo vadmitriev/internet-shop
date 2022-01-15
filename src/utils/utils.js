@@ -5,3 +5,7 @@ export const calcTotalPrice = (data) => {
 
   return Math.round(res * 100) / 100;
 };
+
+export const calcTotalCount = (data) => {
+  return data.reduce((acc, item) => acc + item.count, 0);
+};
