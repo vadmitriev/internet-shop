@@ -22,21 +22,21 @@
     }
   }
 
-  .details {
+  .product-item-details {
     padding: 10px 20px;
 
-    .title {
+    .product-item-title {
       font-size: 18px;
       font-weight: bold;
     }
 
-    .buy {
+    .product-item-buy {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-top: 10px;
 
-      .price {
+      .product-item-price {
         font-size: 18px;
         font-weight: bold;
       }

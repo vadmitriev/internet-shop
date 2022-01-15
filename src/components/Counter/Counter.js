@@ -5,13 +5,13 @@ import classNames from "classnames";
 const Counter = ({ onAdd, onRemove, number, size = "m" }) => {
   const btnClass = classNames({
     "counter-btn": true,
-    small: size === "s",
-    medium: size === "m",
+    "counter-btn-small": size === "s",
+    "counter-btn-medium": size === "m",
   });
 
   const numClass = classNames({
     "counter-number": true,
-    small: size === "s",
+    "counter-small": size === "s",
   });
 
   return (

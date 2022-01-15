@@ -31,11 +31,14 @@ const Header = ({ onChangeTheme, colorTheme }) => {
 
   return (
     <header className="header">
-      <div className="wrapper">
-        <Link to="/" className="title">
+      <div className="header-wrapper">
+        <Link to="/" className="header-title">
           Internet Shop
         </Link>
-        <div className="wrapper cart-btn-wrapper" onClick={handleMenuClick}>
+        <div
+          className="header-wrapper cart-btn-wrapper"
+          onClick={handleMenuClick}
+        >
           <CartBlock />
         </div>
         <ThemeButton onClick={onChangeTheme} colorTheme={colorTheme} />

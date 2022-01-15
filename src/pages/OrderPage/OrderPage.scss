@@ -1,0 +1,62 @@
+.order-page__empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .order-page__empty-text {
+    font-size: 40px;
+    margin: 50px;
+  }
+
+  .order-page__empty-btn-wrapper {
+
+  }
+}
+
+.order-page {
+
+  .order-page__select-all {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 50px;
+
+    padding-bottom: 15px;
+    border-bottom: 1px solid #1d283c;
+
+    .order-page__select-all-left {
+      font-size: 20px;
+    }
+    .order-page__select-all-right {
+
+    }
+  }
+
+  .order-page__product-list {
+    min-height: 60vh;
+  }
+
+  .order-page-buy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-top: 1px solid #1d283c;
+
+    padding-top: 15px;
+
+
+    .order-page-buy__total-price {
+      margin-bottom: 15px;
+      font-weight: bold;
+      font-size: 20px;
+
+      span {
+        margin: 10px 10px;
+        text-align: center;
+      }
+    }
+  }
+}

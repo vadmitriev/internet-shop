@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { useColorTheme } from "hooks/useColorTheme";
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "components/Header/Header";
 import ErrorMessage from "components/ErrorMessage/ErrorMessage";
 import Spinner from "components/Spinner/Spinner";
 import HomePage from "pages/HomePage/HomePage";
+import OrderPage from "pages/OrderPage/OrderPage";
 import Footer from "components/Footer/Footer";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -19,13 +19,7 @@ const { loadDealersId, loadProducts, changeMenuVisible } = shopActions;
 
 const App = () => {
   const dispatch = useDispatch();
-  const { dealers, products, error, isLoading } = useSelector(
-    (state) => state.Shop
-  );
-
-  // const [data, setData] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [isError, setIsError] = useState(false);
+  const { dealers, error, isLoading } = useSelector((state) => state.Shop);
 
   const { toggleColorTheme } = useColorTheme({
     saveInLocalStorage: true,
@@ -55,8 +49,9 @@ const App = () => {
             <Routes>
               <Route
                 path="/"
-                element={isLoading ? <Spinner /> : <HomePage data={products} />}
+                element={isLoading ? <Spinner /> : <HomePage />}
               />
+              <Route path="/order" element={<OrderPage />} />
             </Routes>
           </div>
 

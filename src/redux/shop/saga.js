@@ -1,7 +1,7 @@
 import { all, takeEvery, put, call, select } from "redux-saga/effects";
 import actions from "../shop/actions";
-import { nanoid } from "nanoid";
 import axios from "axios";
+import { transformProducts } from "utils/utils";
 
 const URL = process.env.REACT_APP_HOST_URL;
 
@@ -28,27 +28,12 @@ function* loadProducts({ payload = {} }) {
     return await axios.get(link);
   };
 
-  const transformData = (data) => {
-    return (
-      data &&
-      data.map((item) => {
-        return {
-          id: nanoid(),
-          name: item.name,
-          price: item.price,
-          count: 0,
-          img: `${URL}${item.image}`,
-        };
-      })
-    );
-  };
-
   try {
     let products = yield select(getProducts);
 
     if (!products.length) {
       const newProducts = yield call(() => fetchProducts(payload.data));
-      products = transformData(newProducts.data);
+      products = transformProducts(newProducts.data);
     }
 
     yield put(actions.loadProductsSuccess(products, products.length));

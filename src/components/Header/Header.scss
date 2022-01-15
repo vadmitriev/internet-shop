@@ -12,22 +12,20 @@
   justify-content: space-between;
   margin-bottom: 30px;
 
-  .wrapper {
+  .header-wrapper {
     display: flex;
     flex-grow: 1;
 
-    //max-width: 1000px;
-    //margin: 50px 30px 0 0;
     margin: 30px 10% 30px 10%;
 
-    .title {
+    .header-title {
       color: var(--app-content-main-color);
       text-decoration: none;
       font-size: 24px;
       font-weight: bold;
     }
 
-    .wrapper.cart-btn-wrapper {
+    .cart-btn-wrapper {
       justify-content: flex-end;
       margin: 0 30px;
     }

@@ -9,10 +9,10 @@ const ProductItem = ({ item, onAdd, onRemove }) => {
   return (
     <div className="product-item">
       <ProductCover url={item.img} alt={item.name} />
-      <div className="details">
-        <div className="title">{item.name}</div>
-        <div className="buy">
-          <div className="price">{item.price}$</div>
+      <div className="product-item-details">
+        <div className="product-item-title">{item.name}</div>
+        <div className="product-item-buy">
+          <div className="product-item-price">{item.price}$</div>
           {item.count ? (
             <Counter
               number={item.count}

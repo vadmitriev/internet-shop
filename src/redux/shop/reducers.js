@@ -91,6 +91,40 @@ export default function reducer(state = initState, { type, payload }) {
         products: newProducts,
       };
 
+    case actions.REMOVE_SELECTED_ITEMS:
+      products.map((product) => {
+        if (product.selected) {
+          product.count = 0;
+        }
+        newProducts.push(product);
+      });
+      return {
+        ...state,
+        products: newProducts,
+      };
+
+    case actions.SELECT_ITEM:
+      products.map((product) => {
+        if (product.id === payload.data) {
+          product.selected = !product.selected;
+        }
+        newProducts.push(product);
+      });
+      return {
+        ...state,
+        products: newProducts,
+      };
+
+    case actions.SELECT_ALL_ITEMS:
+      products.map((product) => {
+        product.selected = payload.data;
+        newProducts.push(product);
+      });
+      return {
+        ...state,
+        products: newProducts,
+      };
+
     case actions.CHANGE_MENU_VISIBLE:
       return {
         ...state,

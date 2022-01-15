@@ -8,6 +8,9 @@ const actions = {
 
   ADD_ITEM: "ADD_ITEM",
   REMOVE_ITEM: "REMOVE_ITEM",
+  SELECT_ITEM: "SELECT_ITEM",
+  SELECT_ALL_ITEMS: "SELECT_ALL_ITEMS",
+  REMOVE_SELECTED_ITEMS: "REMOVE_SELECTED_ITEMS",
   REMOVE_ALL_ITEMS: "REMOVE_ALL_ITEMS",
 
   CHANGE_MENU_VISIBLE: "CHANGE_MENU_VISIBLE",
@@ -49,6 +52,20 @@ const actions = {
   removeItem: (data) => ({
     type: actions.REMOVE_ITEM,
     payload: { data },
+  }),
+
+  selectItem: (data) => ({
+    type: actions.SELECT_ITEM,
+    payload: { data },
+  }),
+
+  selectAllItems: (data) => ({
+    type: actions.SELECT_ALL_ITEMS,
+    payload: { data },
+  }),
+
+  removeSelectedItems: () => ({
+    type: actions.REMOVE_SELECTED_ITEMS,
   }),
 
   removeAllItems: () => ({

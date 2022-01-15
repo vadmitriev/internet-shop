@@ -12,12 +12,12 @@
     cursor: pointer;
     font-weight: bold;
 
-    &.medium {
+    &.counter-btn-medium {
       width: 30px;
       height: 30px;
     }
 
-    &.small {
+    &.counter-btn-small {
       width: 20px;
       height: 20px;
     }
@@ -44,7 +44,7 @@
     font-size: 20px;
     margin: 0 10px;
 
-    &.small {
+    &.counter-small {
       font-size: 15px;
     }
   }

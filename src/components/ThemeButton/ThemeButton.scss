@@ -13,8 +13,9 @@
   .moon {
     fill: var(--app-content-main-color);
   }
+
+  &.active .moon {
+    fill: none;
+  }
 }
 
-.mode-switch.active .moon {
-  fill: none;
-}
