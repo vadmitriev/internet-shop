@@ -6,11 +6,11 @@ import OrderItem from "components/OrderItem/OrderItem";
 import Button, { buttonSizes, buttonTypes } from "components/Button/Button";
 
 import shopActions from "redux/shop/actions";
-import { RootState } from "redux/store";
-
-import { calcTotalPrice } from "utils/utils";
 
 import { ProductItemProps } from "types/Shop";
+import { RootState } from "redux/root-reducers";
+
+import { calcTotalPrice } from "utils/utils";
 
 import "./OrderPage.scss";
 

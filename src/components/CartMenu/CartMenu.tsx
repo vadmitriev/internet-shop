@@ -3,10 +3,12 @@ import { useSelector } from "react-redux";
 import CartItem from "components/CartItem/CartItem";
 import Button, { buttonSizes, buttonTypes } from "components/Button/Button";
 
-import { calcTotalPrice } from "utils/utils";
-import "./CartMenu.scss";
 import { ProductItemProps } from "types/Shop";
-import { RootState } from "redux/store";
+import { RootState } from "redux/root-reducers";
+
+import { calcTotalPrice } from "utils/utils";
+
+import "./CartMenu.scss";
 
 interface CartMenuProps {
   onClick: () => void;

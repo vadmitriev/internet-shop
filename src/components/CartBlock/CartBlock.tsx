@@ -7,11 +7,12 @@ import ItemsInCartCounter from "components/ItemsInCartCounter/ItemsInCartCounter
 
 import { calcTotalPrice, calcTotalCount } from "utils/utils";
 
-import { MdOutlineShoppingCart } from "react-icons/md";
-import "./CartBlock.scss";
-
+import { RootState } from "redux/root-reducers";
 import shopActions from "redux/shop/actions";
-import { RootState } from "redux/store";
+
+import { MdOutlineShoppingCart } from "react-icons/md";
+
+import "./CartBlock.scss";
 
 const CartBlock = () => {
   const dispatch = useDispatch();

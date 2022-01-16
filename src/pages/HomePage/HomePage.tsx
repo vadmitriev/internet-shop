@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import shopActions from "redux/shop/actions";
 import { ProductItemProps } from "types/Shop";
-import { RootState } from "redux/store";
+
+import { RootState } from "redux/root-reducers";
 
 import ProductItem from "components/ProductItem/ProductItem";
 

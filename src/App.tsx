@@ -12,10 +12,11 @@ import ErrorBoundary from "./ErrorBoundary";
 
 import { useDispatch, useSelector } from "react-redux";
 import shopActions from "redux/shop/actions";
-import { RootState } from "redux/store";
+
+import { DealersProps } from "./types/Shop";
+import { RootState } from "./redux/root-reducers";
 
 import "./App.scss";
-import { DealersProps } from "./types/Shop";
 
 const { setDealersId, loadProducts, changeMenuVisible } = shopActions;
 

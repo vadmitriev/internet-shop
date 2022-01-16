@@ -1,16 +1,11 @@
-import { createStore, applyMiddleware, Middleware } from "redux";
+import { applyMiddleware, createStore, Middleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import reducers from "./root-reducers";
 import sagas from "./root-saga";
-import { ShopState } from "types/Shop";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const LC_KEY = "redux-state";
-
-export interface RootState {
-  Shop: ShopState;
-}
 
 interface LCMiddlewareProps extends Middleware {
   getState: () => {};
