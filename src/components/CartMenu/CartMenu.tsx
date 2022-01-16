@@ -6,13 +6,14 @@ import Button, { buttonSizes, buttonTypes } from "components/Button/Button";
 import { calcTotalPrice } from "utils/utils";
 import "./CartMenu.scss";
 import { ProductItemProps } from "types/Shop";
+import { RootState } from "redux/store";
 
 interface CartMenuProps {
   onClick: () => void;
 }
 
 const CartMenu: React.FC<CartMenuProps> = ({ onClick }) => {
-  const { products } = useSelector((state: any) => state.Shop);
+  const { products } = useSelector((state: RootState) => state.Shop);
   const totalPrice = calcTotalPrice(products);
 
   const productsInCart = products.filter(

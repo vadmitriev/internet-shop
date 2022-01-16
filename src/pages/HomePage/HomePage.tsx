@@ -1,17 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import shopActions from "redux/shop/actions";
+import { ProductItemProps } from "types/Shop";
+import { RootState } from "redux/store";
 
 import ProductItem from "components/ProductItem/ProductItem";
-import "./HomePage.scss";
 
-import { ProductItemProps } from "types/Shop";
+import "./HomePage.scss";
 
 const HomePage = () => {
   const { addItem, removeItem } = shopActions;
   const dispatch = useDispatch();
 
-  const { products } = useSelector((state: any) => state.Shop);
+  const { products } = useSelector((state: RootState) => state.Shop);
 
   const emptyMessage = "К сожалению, в настоящее время нет доступных товаров";
 

@@ -11,11 +11,14 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import "./CartBlock.scss";
 
 import shopActions from "redux/shop/actions";
+import { RootState } from "redux/store";
 
 const CartBlock = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { products, isMenuVisible } = useSelector((state: any) => state.Shop);
+  const { products, isMenuVisible } = useSelector(
+    (state: RootState) => state.Shop
+  );
 
   const { changeMenuVisible } = shopActions;
 

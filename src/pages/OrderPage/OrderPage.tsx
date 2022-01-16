@@ -6,6 +6,7 @@ import OrderItem from "components/OrderItem/OrderItem";
 import Button, { buttonSizes, buttonTypes } from "components/Button/Button";
 
 import shopActions from "redux/shop/actions";
+import { RootState } from "redux/store";
 
 import { calcTotalPrice } from "utils/utils";
 
@@ -16,7 +17,7 @@ import "./OrderPage.scss";
 const OrderPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { products } = useSelector((state: any) => state.Shop);
+  const { products } = useSelector((state: RootState) => state.Shop);
   const {
     removeAllItems,
     selectItem,
