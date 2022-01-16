@@ -14,6 +14,7 @@ export const calcTotalCount = (data: ProductItemProps[]) => {
 };
 
 export const transformProducts = (data: any[]): ProductItemProps[] => {
+  const URL = process.env.REACT_APP_HOST_URL;
   return (
     data &&
     data.map((item: GoodFromAPIProps) => {
