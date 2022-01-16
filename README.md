@@ -20,6 +20,9 @@ git clone https://github.com/vadmitriev/internet-shop.git
 ``` console
 cd todolist
 ```
+``` console
+cp env.sample .env
+```
 
 С использованием Nodejs локально:
 ``` console
