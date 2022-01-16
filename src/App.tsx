@@ -8,18 +8,25 @@ import Spinner from "components/Spinner/Spinner";
 import HomePage from "pages/HomePage/HomePage";
 import OrderPage from "pages/OrderPage/OrderPage";
 import Footer from "components/Footer/Footer";
+import ErrorBoundary from "./ErrorBoundary";
 
 import { useDispatch, useSelector } from "react-redux";
 import shopActions from "redux/shop/actions";
-import ErrorBoundary from "./ErrorBoundary";
+
+import { DealersProps } from "./types/Shop";
+import { RootState } from "./redux/root-reducers";
 
 import "./App.scss";
 
-const { loadDealersId, loadProducts, changeMenuVisible } = shopActions;
+const { setDealersId, loadProducts, changeMenuVisible } = shopActions;
 
-const App = () => {
+interface AppProps {
+  dealers?: DealersProps[] | null;
+}
+
+const App: React.FC<AppProps> = ({ dealers = null }) => {
   const dispatch = useDispatch();
-  const { dealers, error, isLoading } = useSelector((state) => state.Shop);
+  const { error, isLoading } = useSelector((state: RootState) => state.Shop);
 
   const { toggleColorTheme } = useColorTheme({
     saveInLocalStorage: true,
@@ -30,8 +37,9 @@ const App = () => {
   };
 
   useEffect(() => {
+    dispatch(setDealersId(dealers));
     dispatch(loadProducts(dealers));
-  }, [dispatch]);
+  }, [dispatch, dealers]);
 
   const handleContentClick = () => {
     dispatch(changeMenuVisible(false));

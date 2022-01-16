@@ -1,7 +1,12 @@
 import React from "react";
 import "./ProductCover.scss";
 
-const ProductCover = ({ url, alt = "" }) => {
+interface ProductCoverProps {
+  url: string;
+  alt?: string;
+}
+
+const ProductCover: React.FC<ProductCoverProps> = ({ url, alt = "" }) => {
   return (
     <div className="product-cover">
       <img src={url} alt={alt} />

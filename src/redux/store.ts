@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from "redux";
+import { applyMiddleware, createStore, Middleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import reducers from "./root-reducers";
 import sagas from "./root-saga";
@@ -7,7 +7,13 @@ const sagaMiddleware = createSagaMiddleware();
 
 const LC_KEY = "redux-state";
 
-const localStorageMiddleware = ({ getState }) => {
+interface LCMiddlewareProps extends Middleware {
+  getState: () => {};
+}
+
+const localStorageMiddleware: Middleware<LCMiddlewareProps> = ({
+  getState,
+}) => {
   return (next) => (action) => {
     const result = next(action);
     localStorage.setItem(LC_KEY, JSON.stringify(getState()));

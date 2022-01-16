@@ -1,11 +1,23 @@
 import React from "react";
 import ProductCover from "components/ProductCover/ProductCover";
-import Button from "components/Button/Button";
-import Counter from "../Counter/Counter";
+import Button, { buttonTypes } from "components/Button/Button";
+import Counter, { counterSizes } from "components/Counter/Counter";
+
+import { ProductItemProps } from "types/Shop";
 
 import "./ProductItem.scss";
 
-const ProductItem = ({ item, onAdd, onRemove }) => {
+interface ProductItemComponentProps {
+  item: ProductItemProps;
+  onAdd: () => void;
+  onRemove: () => void;
+}
+
+const ProductItem: React.FC<ProductItemComponentProps> = ({
+  item,
+  onAdd,
+  onRemove,
+}) => {
   return (
     <div className="product-item">
       <ProductCover url={item.img} alt={item.name} />
@@ -18,10 +30,10 @@ const ProductItem = ({ item, onAdd, onRemove }) => {
               number={item.count}
               onAdd={onAdd}
               onRemove={onRemove}
-              size="m"
+              size={counterSizes.medium}
             />
           ) : (
-            <Button type="primary" onClick={onAdd}>
+            <Button type={buttonTypes.primary} onClick={onAdd}>
               В корзину
             </Button>
           )}

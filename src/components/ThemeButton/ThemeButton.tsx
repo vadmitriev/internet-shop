@@ -1,7 +1,11 @@
 import React from "react";
 import "./ThemeButton.scss";
 
-const ThemeButton = ({ onClick }) => {
+interface ThemeButtonProps {
+  onClick: () => void;
+}
+
+const ThemeButton: React.FC<ThemeButtonProps> = ({ onClick }) => {
   return (
     <button className="mode-switch" title="Switch Theme">
       <svg

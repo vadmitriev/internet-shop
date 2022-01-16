@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
 
-const COLOR_THEME = {
-  light: "light",
-  dark: "dark",
-};
+export enum COLOR_THEME {
+  light = "light",
+  dark = "dark",
+}
 
 const THEME_QUERY = "(prefers-color-scheme: dark)";
 

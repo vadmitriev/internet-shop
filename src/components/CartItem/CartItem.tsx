@@ -1,20 +1,26 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import Counter from "components/Counter/Counter";
+import Counter, { counterSizes } from "components/Counter/Counter";
 
 import shopActions from "redux/shop/actions";
 
 import "./CartItem.scss";
 
-const CartItem = ({ item }) => {
+import { ProductItemProps } from "types/Shop";
+
+interface CartItemProps {
+  item: ProductItemProps;
+}
+
+const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const dispatch = useDispatch();
   const { addItem, removeItem } = shopActions;
 
-  const handleAdd = (id) => {
+  const handleAdd = (id: string) => {
     dispatch(addItem(id));
   };
 
-  const handleRemove = (id) => {
+  const handleRemove = (id: string) => {
     dispatch(removeItem(id));
   };
 
@@ -30,7 +36,7 @@ const CartItem = ({ item }) => {
             onAdd={() => handleAdd(item.id)}
             onRemove={() => handleRemove(item.id)}
             number={item.count}
-            size="s"
+            size={counterSizes.small}
           />
           <div className="cart-item__price">{price} $</div>
         </div>

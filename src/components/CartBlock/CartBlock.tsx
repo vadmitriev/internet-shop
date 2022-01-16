@@ -7,15 +7,19 @@ import ItemsInCartCounter from "components/ItemsInCartCounter/ItemsInCartCounter
 
 import { calcTotalPrice, calcTotalCount } from "utils/utils";
 
-import { MdOutlineShoppingCart } from "react-icons/md";
-import "./CartBlock.scss";
-
+import { RootState } from "redux/root-reducers";
 import shopActions from "redux/shop/actions";
+
+import { MdOutlineShoppingCart } from "react-icons/md";
+
+import "./CartBlock.scss";
 
 const CartBlock = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { products, isMenuVisible } = useSelector((state) => state.Shop);
+  const { products, isMenuVisible } = useSelector(
+    (state: RootState) => state.Shop
+  );
 
   const { changeMenuVisible } = shopActions;
 

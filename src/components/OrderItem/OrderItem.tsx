@@ -1,11 +1,17 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import Counter from "components/Counter/Counter";
+import Counter, { counterSizes } from "components/Counter/Counter";
 import shopActions from "redux/shop/actions";
 
 import "./OrderItem.scss";
+import { ProductItemProps } from "types/Shop";
 
-const OrderItem = ({ item, onCheck }) => {
+interface OrderItemProps {
+  item: ProductItemProps;
+  onCheck: () => void;
+}
+
+const OrderItem: React.FC<OrderItemProps> = ({ item, onCheck }) => {
   const dispatch = useDispatch();
   const { addItem, removeItem } = shopActions;
 
@@ -37,7 +43,7 @@ const OrderItem = ({ item, onCheck }) => {
           number={item.count}
           onAdd={handleAdd}
           onRemove={handleRemove}
-          size="m"
+          size={counterSizes.medium}
         />
         <div className="order-item__total-price">{price} $</div>
       </div>
