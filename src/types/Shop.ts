@@ -5,7 +5,7 @@ export type GoodFromAPIProps = {
 };
 
 export type DealersProps = {
-  ids: string[];
+  ids: string[] | null;
 };
 
 export type ProductItemProps = {

@@ -1,12 +1,14 @@
 import { all, takeEvery, put, call, select } from "redux-saga/effects";
 import { actions, ShopActionTypes } from "./actions";
 import axios from "axios";
-import { transformProducts } from "utils/utils";
-import { ProductItemProps, ShopState } from "types/Shop";
+import { isArraysEqual, transformProducts } from "utils/utils";
+import { DealersProps, ProductItemProps, ShopState } from "types/Shop";
+import { ResponseGenerator } from "types/Generator";
 
 const URL = process.env.REACT_APP_HOST_URL;
 
 const getProducts = (state: ShopState) => state.products;
+const getDealers = (state: ShopState) => state.dealers;
 
 function* loadProducts({ payload = {} }: any) {
   const fetchProducts = async (ids = []) => {
@@ -19,10 +21,13 @@ function* loadProducts({ payload = {} }: any) {
 
   try {
     let products: ProductItemProps[] = yield select(getProducts);
+    const dealers: DealersProps[] = yield select(getDealers);
+    const needLoadAgain = !isArraysEqual(dealers, payload.data);
 
-    if (!products || !products.length) {
-      // @ts-ignore
-      const newProducts = yield call(() => fetchProducts(payload.data));
+    if (!products || !products.length || needLoadAgain) {
+      const newProducts: ResponseGenerator = yield call(() =>
+        fetchProducts(payload.data)
+      );
       products = transformProducts(newProducts.data);
     }
 

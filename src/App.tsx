@@ -15,14 +15,17 @@ import shopActions from "redux/shop/actions";
 import { RootState } from "redux/store";
 
 import "./App.scss";
+import { DealersProps } from "./types/Shop";
 
-const { loadDealersId, loadProducts, changeMenuVisible } = shopActions;
+const { setDealersId, loadProducts, changeMenuVisible } = shopActions;
 
-const App = () => {
+interface AppProps {
+  dealers?: DealersProps[] | null;
+}
+
+const App: React.FC<AppProps> = ({ dealers = null }) => {
   const dispatch = useDispatch();
-  const { dealers, error, isLoading } = useSelector(
-    (state: RootState) => state.Shop
-  );
+  const { error, isLoading } = useSelector((state: RootState) => state.Shop);
 
   const { toggleColorTheme } = useColorTheme({
     saveInLocalStorage: true,
@@ -33,6 +36,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    dispatch(setDealersId(dealers));
     dispatch(loadProducts(dealers));
   }, [dispatch, dealers]);
 

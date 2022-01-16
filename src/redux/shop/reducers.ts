@@ -16,26 +16,10 @@ export default function reducer(state = initState, action: ShopAction) {
   const { type, payload } = action;
 
   switch (type) {
-    case ShopActionTypes.LOAD_DEALERS_ID:
+    case ShopActionTypes.SET_DEALERS_ID:
       return {
         ...state,
-        isLoading: true,
-        error: false,
-      };
-
-    case ShopActionTypes.LOAD_DEALERS_ID_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        error: false,
         dealers: payload.data,
-      };
-
-    case ShopActionTypes.LOAD_DEALERS_ID_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        error: payload.error,
       };
 
     case ShopActionTypes.LOAD_PRODUCTS:

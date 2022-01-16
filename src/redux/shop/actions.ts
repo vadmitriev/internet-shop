@@ -1,9 +1,7 @@
 import { DealersProps, ProductItemProps } from "types/Shop";
 
 export enum ShopActionTypes {
-  LOAD_DEALERS_ID = "LOAD_DEALERS_ID",
-  LOAD_DEALERS_ID_SUCCESS = "LOAD_DEALERS_ID_SUCCESS",
-  LOAD_DEALERS_ID_ERROR = "LOAD_DEALERS_ID_ERROR",
+  SET_DEALERS_ID = "SET_DEALERS_ID",
   LOAD_PRODUCTS = "LOAD_PRODUCTS",
   LOAD_PRODUCTS_SUCCESS = "LOAD_PRODUCTS_SUCCESS",
   LOAD_PRODUCTS_ERROR = "LOAD_PRODUCTS_ERROR",
@@ -19,18 +17,9 @@ export enum ShopActionTypes {
 }
 
 export const actions = {
-  loadDealersId: () => ({
-    type: ShopActionTypes.LOAD_DEALERS_ID,
-  }),
-
-  loadDealersIdSuccess: (data: DealersProps[], totalItems: number) => ({
-    type: ShopActionTypes.LOAD_DEALERS_ID_SUCCESS,
-    payload: { data, totalItems },
-  }),
-
-  loadDealersIdError: (error: Error | string | boolean) => ({
-    type: ShopActionTypes.LOAD_DEALERS_ID_ERROR,
-    payload: { error },
+  setDealersId: (data: DealersProps[] | null) => ({
+    type: ShopActionTypes.SET_DEALERS_ID,
+    payload: { data },
   }),
 
   loadProducts: (data: any) => ({

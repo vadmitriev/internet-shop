@@ -3,8 +3,9 @@ import ProductCover from "components/ProductCover/ProductCover";
 import Button, { buttonTypes } from "components/Button/Button";
 import Counter, { counterSizes } from "components/Counter/Counter";
 
-import "./ProductItem.scss";
 import { ProductItemProps } from "types/Shop";
+
+import "./ProductItem.scss";
 
 interface ProductItemComponentProps {
   item: ProductItemProps;
