@@ -15,7 +15,7 @@ import shopActions from "redux/shop/actions";
 const CartBlock = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { products, isMenuVisible } = useSelector((state) => state.Shop);
+  const { products, isMenuVisible } = useSelector((state: any) => state.Shop);
 
   const { changeMenuVisible } = shopActions;
 

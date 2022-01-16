@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ThemeButton from "components/ThemeButton/ThemeButton";
 import CartBlock from "components/CartBlock/CartBlock";
@@ -10,7 +10,7 @@ import { COLOR_THEME } from "hooks/useColorTheme";
 
 interface HeaderProps {
   onChangeTheme: () => void;
-  colorTheme: COLOR_THEME;
+  colorTheme?: COLOR_THEME;
 }
 
 const Header: React.FC<HeaderProps> = ({ onChangeTheme, colorTheme }) => {
@@ -21,11 +21,14 @@ const Header: React.FC<HeaderProps> = ({ onChangeTheme, colorTheme }) => {
     dispatch(changeMenuVisible(true));
   };
 
-  const escFunction = (event: KeyboardEvent) => {
-    if (event.keyCode === 27) {
-      dispatch(changeMenuVisible(false));
-    }
-  };
+  const escFunction = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        dispatch(changeMenuVisible(false));
+      }
+    },
+    [dispatch, changeMenuVisible]
+  );
 
   useEffect(() => {
     document.addEventListener("keydown", escFunction);
@@ -33,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ onChangeTheme, colorTheme }) => {
     return () => {
       document.removeEventListener("keydown", escFunction);
     };
-  }, []);
+  }, [escFunction]);
 
   return (
     <header className="header">

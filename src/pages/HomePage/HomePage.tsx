@@ -5,13 +5,13 @@ import shopActions from "redux/shop/actions";
 import ProductItem from "components/ProductItem/ProductItem";
 import "./HomePage.scss";
 
-import { ProductProps } from "types/OrderItem";
+import { ProductItemProps } from "types/Shop";
 
 const HomePage = () => {
   const { addItem, removeItem } = shopActions;
   const dispatch = useDispatch();
 
-  const { products } = useSelector((state) => state.Shop);
+  const { products } = useSelector((state: any) => state.Shop);
 
   const emptyMessage = "К сожалению, в настоящее время нет доступных товаров";
 
@@ -26,7 +26,7 @@ const HomePage = () => {
   return (
     <div className="home-page">
       {products && products.length ? (
-        products.map((item: ProductProps) => (
+        products.map((item: ProductItemProps) => (
           <ProductItem
             key={item.id}
             item={item}

@@ -3,20 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import OrderItem from "components/OrderItem/OrderItem";
-import Button from "components/Button/Button";
+import Button, { buttonSizes, buttonTypes } from "components/Button/Button";
 
 import shopActions from "redux/shop/actions";
 
 import { calcTotalPrice } from "utils/utils";
 
-import { ProductProps } from "types/OrderItem";
+import { ProductItemProps } from "types/Shop";
 
 import "./OrderPage.scss";
 
 const OrderPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { products } = useSelector((state) => state.Shop);
+  const { products } = useSelector((state: any) => state.Shop);
   const {
     removeAllItems,
     selectItem,
@@ -28,10 +28,10 @@ const OrderPage = () => {
   const [allSelected, setAllSelected] = useState(false);
 
   const productsInCart = products.filter(
-    (product: ProductProps) => product.count > 0
+    (product: ProductItemProps) => product.count > 0
   );
   const selectedProducts = productsInCart.filter(
-    (product: ProductProps) => product.selected
+    (product: ProductItemProps) => product.selected
   );
 
   const totalPrice = calcTotalPrice(productsInCart);
@@ -39,7 +39,7 @@ const OrderPage = () => {
   useEffect(() => {
     dispatch(changeMenuVisible(false));
     dispatch(selectAllItems(false));
-  }, []);
+  }, [dispatch, changeMenuVisible, selectAllItems]);
 
   const handleClick = () => {
     navigate("/");
@@ -50,7 +50,11 @@ const OrderPage = () => {
       <div className="order-page__empty">
         <div className="order-page__empty-text">Корзина пуста</div>
         <div className="order-page__empty-btn-wrapper">
-          <Button type="primary" size="l" onClick={handleClick}>
+          <Button
+            type={buttonTypes.primary}
+            size={buttonSizes.large}
+            onClick={handleClick}
+          >
             На главную
           </Button>
         </div>
@@ -87,14 +91,18 @@ const OrderPage = () => {
         </div>
         <div className="order-page__select-all-right">
           {selectedProducts.length > 0 && (
-            <Button size="m" type="danger" onClick={handleDeleteClick}>
+            <Button
+              size={buttonSizes.medium}
+              type={buttonTypes.danger}
+              onClick={handleDeleteClick}
+            >
               Удалить выбранные
             </Button>
           )}
         </div>
       </div>
       <div className="order-page__product-list">
-        {productsInCart.map((item: ProductProps) => (
+        {productsInCart.map((item: ProductItemProps) => (
           <OrderItem
             key={item.id}
             item={item}
@@ -107,7 +115,11 @@ const OrderPage = () => {
           <span>Итого:</span>
           <span>{totalPrice} $</span>
         </div>
-        <Button onClick={handleOrderClick} size="m" type="primary">
+        <Button
+          onClick={handleOrderClick}
+          size={buttonSizes.medium}
+          type={buttonTypes.primary}
+        >
           Оформить заказ
         </Button>
       </div>

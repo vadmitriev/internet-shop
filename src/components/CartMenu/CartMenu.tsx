@@ -5,18 +5,18 @@ import Button, { buttonSizes, buttonTypes } from "components/Button/Button";
 
 import { calcTotalPrice } from "utils/utils";
 import "./CartMenu.scss";
-import { ProductProps } from "types/OrderItem";
+import { ProductItemProps } from "types/Shop";
 
 interface CartMenuProps {
   onClick: () => void;
 }
 
 const CartMenu: React.FC<CartMenuProps> = ({ onClick }) => {
-  const { products } = useSelector((state) => state.Shop);
+  const { products } = useSelector((state: any) => state.Shop);
   const totalPrice = calcTotalPrice(products);
 
   const productsInCart = products.filter(
-    (product: ProductProps) => product.count > 0
+    (product: ProductItemProps) => product.count > 0
   );
 
   return (
@@ -24,7 +24,7 @@ const CartMenu: React.FC<CartMenuProps> = ({ onClick }) => {
       <div className="cart-menu-title">Корзина</div>
       <div className="cart-menu-list">
         {productsInCart.length
-          ? products.map((product: ProductProps) => (
+          ? products.map((product: ProductItemProps) => (
               <CartItem key={product.id} item={product} />
             ))
           : "Корзина пуста"}

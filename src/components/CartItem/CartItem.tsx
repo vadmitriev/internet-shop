@@ -6,10 +6,10 @@ import shopActions from "redux/shop/actions";
 
 import "./CartItem.scss";
 
-import { ProductProps } from "types/OrderItem";
+import { ProductItemProps } from "types/Shop";
 
 interface CartItemProps {
-  item: ProductProps;
+  item: ProductItemProps;
 }
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {

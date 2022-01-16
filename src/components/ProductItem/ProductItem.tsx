@@ -1,18 +1,22 @@
 import React from "react";
 import ProductCover from "components/ProductCover/ProductCover";
-import Button from "components/Button/Button";
-import Counter from "components/Counter/Counter";
+import Button, { buttonTypes } from "components/Button/Button";
+import Counter, { counterSizes } from "components/Counter/Counter";
 
 import "./ProductItem.scss";
-import { ProductProps } from "types/OrderItem";
+import { ProductItemProps } from "types/Shop";
 
-interface ProductItemProps {
-  item: ProductProps;
+interface ProductItemComponentProps {
+  item: ProductItemProps;
   onAdd: () => void;
   onRemove: () => void;
 }
 
-const ProductItem: React.FC<ProductItemProps> = ({ item, onAdd, onRemove }) => {
+const ProductItem: React.FC<ProductItemComponentProps> = ({
+  item,
+  onAdd,
+  onRemove,
+}) => {
   return (
     <div className="product-item">
       <ProductCover url={item.img} alt={item.name} />
@@ -25,10 +29,10 @@ const ProductItem: React.FC<ProductItemProps> = ({ item, onAdd, onRemove }) => {
               number={item.count}
               onAdd={onAdd}
               onRemove={onRemove}
-              size="m"
+              size={counterSizes.medium}
             />
           ) : (
-            <Button type="primary" onClick={onAdd}>
+            <Button type={buttonTypes.primary} onClick={onAdd}>
               В корзину
             </Button>
           )}

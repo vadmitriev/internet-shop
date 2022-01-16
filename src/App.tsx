@@ -19,7 +19,7 @@ const { loadDealersId, loadProducts, changeMenuVisible } = shopActions;
 
 const App = () => {
   const dispatch = useDispatch();
-  const { dealers, error, isLoading } = useSelector((state) => state.Shop);
+  const { dealers, error, isLoading } = useSelector((state: any) => state.Shop);
 
   const { toggleColorTheme } = useColorTheme({
     saveInLocalStorage: true,
@@ -31,7 +31,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(loadProducts(dealers));
-  }, [dispatch]);
+  }, [dispatch, dealers]);
 
   const handleContentClick = () => {
     dispatch(changeMenuVisible(false));
