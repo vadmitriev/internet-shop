@@ -30,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
   const btnClass = classNames({
     btn: true,
     "btn-primary": type === buttonTypes.primary,
-    "btn-secondary": type === buttonTypes.primary,
+    "btn-secondary": type === buttonTypes.secondary,
     "btn-danger": type === buttonTypes.danger,
     "btn-small": size === buttonSizes.small,
     "btn-medium": size === buttonSizes.medium,
