@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
+import { GoodFromAPIProps, ProductProps } from "types/OrderItem";
 
-export const calcTotalPrice = (data) => {
+export const calcTotalPrice = (data: ProductProps[]) => {
   const res = data.reduce((acc, item) => {
     return acc + item.count * item.price;
   }, 0);
@@ -8,14 +9,14 @@ export const calcTotalPrice = (data) => {
   return Math.round(res * 100) / 100;
 };
 
-export const calcTotalCount = (data) => {
+export const calcTotalCount = (data: ProductProps[]) => {
   return data.reduce((acc, item) => acc + item.count, 0);
 };
 
-export const transformProducts = (data) => {
+export const transformProducts = (data: GoodFromAPIProps[]): ProductProps[] => {
   return (
     data &&
-    data.map((item) => {
+    data.map((item: GoodFromAPIProps) => {
       return {
         id: nanoid(),
         name: item.name,

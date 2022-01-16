@@ -8,6 +8,9 @@ import Button from "components/Button/Button";
 import shopActions from "redux/shop/actions";
 
 import { calcTotalPrice } from "utils/utils";
+
+import { ProductProps } from "types/OrderItem";
+
 import "./OrderPage.scss";
 
 const OrderPage = () => {
@@ -24,8 +27,12 @@ const OrderPage = () => {
 
   const [allSelected, setAllSelected] = useState(false);
 
-  const productsInCart = products.filter((product) => product.count > 0);
-  const selectedProducts = productsInCart.filter((product) => product.selected);
+  const productsInCart = products.filter(
+    (product: ProductProps) => product.count > 0
+  );
+  const selectedProducts = productsInCart.filter(
+    (product: ProductProps) => product.selected
+  );
 
   const totalPrice = calcTotalPrice(productsInCart);
 
@@ -51,7 +58,7 @@ const OrderPage = () => {
     );
   }
 
-  const handleSelectItem = (id) => {
+  const handleSelectItem = (id: string) => {
     dispatch(selectItem(id));
   };
 
@@ -87,7 +94,7 @@ const OrderPage = () => {
         </div>
       </div>
       <div className="order-page__product-list">
-        {productsInCart.map((item) => (
+        {productsInCart.map((item: ProductProps) => (
           <OrderItem
             key={item.id}
             item={item}

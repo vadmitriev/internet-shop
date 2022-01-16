@@ -1,7 +1,11 @@
 import React from "react";
 import "./Footer.scss";
 
-const Footer = ({ children }) => {
+interface FooterProps {
+  children: React.ReactNode;
+}
+
+const Footer: React.FC<FooterProps> = ({ children }) => {
   return <footer className="footer">{children}</footer>;
 };
 

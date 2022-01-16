@@ -1,5 +1,5 @@
 import { all, takeEvery, put, call, select } from "redux-saga/effects";
-import actions from "../shop/actions";
+import actions from "./actions";
 import axios from "axios";
 import { transformProducts } from "utils/utils";
 

@@ -4,8 +4,14 @@ import Counter from "components/Counter/Counter";
 import shopActions from "redux/shop/actions";
 
 import "./OrderItem.scss";
+import { ProductProps } from "types/OrderItem";
 
-const OrderItem = ({ item, onCheck }) => {
+interface OrderItemProps {
+  item: ProductProps;
+  onCheck: () => void;
+}
+
+const OrderItem: React.FC<OrderItemProps> = ({ item, onCheck }) => {
   const dispatch = useDispatch();
   const { addItem, removeItem } = shopActions;
 

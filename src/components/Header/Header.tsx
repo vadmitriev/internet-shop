@@ -6,8 +6,14 @@ import { Link } from "react-router-dom";
 import "./Header.scss";
 
 import shopActions from "redux/shop/actions";
+import { COLOR_THEME } from "hooks/useColorTheme";
 
-const Header = ({ onChangeTheme, colorTheme }) => {
+interface HeaderProps {
+  onChangeTheme: () => void;
+  colorTheme: COLOR_THEME;
+}
+
+const Header: React.FC<HeaderProps> = ({ onChangeTheme, colorTheme }) => {
   const dispatch = useDispatch();
   const { changeMenuVisible } = shopActions;
 
@@ -15,7 +21,7 @@ const Header = ({ onChangeTheme, colorTheme }) => {
     dispatch(changeMenuVisible(true));
   };
 
-  const escFunction = (event) => {
+  const escFunction = (event: KeyboardEvent) => {
     if (event.keyCode === 27) {
       dispatch(changeMenuVisible(false));
     }
@@ -41,7 +47,7 @@ const Header = ({ onChangeTheme, colorTheme }) => {
         >
           <CartBlock />
         </div>
-        <ThemeButton onClick={onChangeTheme} colorTheme={colorTheme} />
+        <ThemeButton onClick={onChangeTheme} />
       </div>
     </header>
   );

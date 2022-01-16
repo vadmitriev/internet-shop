@@ -1,11 +1,18 @@
 import React from "react";
 import ProductCover from "components/ProductCover/ProductCover";
 import Button from "components/Button/Button";
-import Counter from "../Counter/Counter";
+import Counter from "components/Counter/Counter";
 
 import "./ProductItem.scss";
+import { ProductProps } from "types/OrderItem";
 
-const ProductItem = ({ item, onAdd, onRemove }) => {
+interface ProductItemProps {
+  item: ProductProps;
+  onAdd: () => void;
+  onRemove: () => void;
+}
+
+const ProductItem: React.FC<ProductItemProps> = ({ item, onAdd, onRemove }) => {
   return (
     <div className="product-item">
       <ProductCover url={item.img} alt={item.name} />
