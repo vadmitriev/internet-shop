@@ -18,7 +18,7 @@ import { RootState } from "./redux/root-reducers";
 
 import "./App.scss";
 
-const { setDealersId, loadProducts, changeMenuVisible } = shopActions;
+const { setDealersId, loadProducts } = shopActions;
 
 interface AppProps {
   dealers?: DealersProps[] | null;
@@ -41,10 +41,6 @@ const App: React.FC<AppProps> = ({ dealers = null }) => {
     dispatch(loadProducts(dealers));
   }, [dispatch, dealers]);
 
-  const handleContentClick = () => {
-    dispatch(changeMenuVisible(false));
-  };
-
   return (
     <ErrorBoundary>
       <Router>
@@ -53,7 +49,7 @@ const App: React.FC<AppProps> = ({ dealers = null }) => {
 
           {error && <ErrorMessage />}
 
-          <div className="content-wrapper" onClick={handleContentClick}>
+          <div className="content-wrapper">
             <Routes>
               <Route
                 path="/"

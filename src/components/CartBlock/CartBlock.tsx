@@ -1,30 +1,22 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import CartMenu from "components/CartMenu/CartMenu";
 import ItemsInCartCounter from "components/ItemsInCartCounter/ItemsInCartCounter";
 
 import { calcTotalPrice, calcTotalCount } from "utils/utils";
 
 import { RootState } from "redux/root-reducers";
-import shopActions from "redux/shop/actions";
 
 import { MdOutlineShoppingCart } from "react-icons/md";
 
 import "./CartBlock.scss";
 
 const CartBlock = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { products, isMenuVisible } = useSelector(
-    (state: RootState) => state.Shop
-  );
-
-  const { changeMenuVisible } = shopActions;
+  const { products } = useSelector((state: RootState) => state.Shop);
 
   const handleGotoOrderClick = () => {
-    dispatch(changeMenuVisible(false));
     navigate("/order");
   };
 
@@ -32,13 +24,12 @@ const CartBlock = () => {
   const totalCount = calcTotalCount(products);
 
   return (
-    <div className="cart-block">
+    <div className="cart-block" onClick={handleGotoOrderClick}>
       <MdOutlineShoppingCart size={25} className="icon" />
       <ItemsInCartCounter count={totalCount} />
       <span className="cart-block__total-price">
         {totalPrice ? `${totalPrice} $` : ""}
       </span>
-      {isMenuVisible && <CartMenu onClick={handleGotoOrderClick} />}
     </div>
   );
 };

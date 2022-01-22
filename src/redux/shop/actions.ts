@@ -64,11 +64,6 @@ export const actions = {
   removeAllItems: () => ({
     type: ShopActionTypes.REMOVE_ALL_ITEMS,
   }),
-
-  changeMenuVisible: (data: boolean) => ({
-    type: ShopActionTypes.CHANGE_MENU_VISIBLE,
-    payload: { data },
-  }),
 };
 
 export default actions;

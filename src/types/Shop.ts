@@ -24,7 +24,6 @@ export type ShopAction = {
 
 export interface ShopState {
   isLoading: boolean;
-  isMenuVisible: boolean;
   error: null | boolean | string | Error;
   dealers: DealersProps[];
   products: ProductItemProps[];

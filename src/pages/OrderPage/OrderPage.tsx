@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -18,13 +18,8 @@ const OrderPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { products } = useSelector((state: RootState) => state.Shop);
-  const {
-    removeAllItems,
-    selectItem,
-    selectAllItems,
-    removeSelectedItems,
-    changeMenuVisible,
-  } = shopActions;
+  const { removeAllItems, selectItem, selectAllItems, removeSelectedItems } =
+    shopActions;
 
   const [allSelected, setAllSelected] = useState(false);
 
@@ -36,11 +31,6 @@ const OrderPage = () => {
   );
 
   const totalPrice = calcTotalPrice(productsInCart);
-
-  useEffect(() => {
-    dispatch(changeMenuVisible(false));
-    dispatch(selectAllItems(false));
-  }, [dispatch, changeMenuVisible, selectAllItems]);
 
   const handleClick = () => {
     navigate("/");
@@ -78,7 +68,6 @@ const OrderPage = () => {
 
   const handleOrderClick = () => {
     dispatch(removeAllItems());
-    dispatch(changeMenuVisible(false));
     dispatch(selectAllItems(false));
     navigate("/");
   };
@@ -87,7 +76,11 @@ const OrderPage = () => {
     <div className="order-page">
       <div className="order-page__select-all">
         <div className="order-page__select-all-left" onClick={handleSelectAll}>
-          <input type="checkbox" checked={allSelected} />
+          <input
+            type="checkbox"
+            checked={allSelected && selectedProducts.length > 0}
+            onChange={handleSelectAll}
+          />
           <span>Выбрать все</span>
         </div>
         <div className="order-page__select-all-right">

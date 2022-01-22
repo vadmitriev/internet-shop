@@ -2,13 +2,14 @@ import { all, takeEvery, put, call, select } from "redux-saga/effects";
 import { actions, ShopActionTypes } from "./actions";
 import axios from "axios";
 import { isArraysEqual, transformProducts } from "utils/utils";
-import { DealersProps, ProductItemProps, ShopState } from "types/Shop";
+import { DealersProps, ProductItemProps } from "types/Shop";
 import { ResponseGenerator } from "types/Generator";
+import { RootState } from "../root-reducers";
 
 const URL = process.env.REACT_APP_HOST_URL;
 
-const getProducts = (state: ShopState) => state.products;
-const getDealers = (state: ShopState) => state.dealers;
+const getProducts = (state: RootState) => state.Shop.products;
+const getDealers = (state: RootState) => state.Shop.dealers;
 
 function* loadProducts({ payload = {} }: any) {
   const fetchProducts = async (ids = []) => {

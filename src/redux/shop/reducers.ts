@@ -3,7 +3,6 @@ import { ProductItemProps, ShopState, ShopAction } from "types/Shop";
 
 const initState: ShopState = {
   isLoading: false,
-  isMenuVisible: false,
   error: null,
   dealers: [],
   products: [],
@@ -110,12 +109,6 @@ export default function reducer(state = initState, action: ShopAction) {
       return {
         ...state,
         products: newProducts,
-      };
-
-    case ShopActionTypes.CHANGE_MENU_VISIBLE:
-      return {
-        ...state,
-        isMenuVisible: payload.data,
       };
 
     default:
